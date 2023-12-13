@@ -6,9 +6,12 @@ import { adminLogin } from "../../services/auth";
 import { AdminLoginTypes } from "../../types/auth";
 import useNotification from "../../hooks/useNotification";
 import { showNotification } from "@mantine/notifications";
+import { useDisclosure } from "@mantine/hooks";
+import Confirmation from "./Components/Confirmation";
 
 const SignUp = () => {
   const [loading, setLoading] = useState(false);
+  const [opened, { open, close }] = useDisclosure(true);
 
   const { handleError } = useNotification();
 
@@ -39,6 +42,7 @@ const SignUp = () => {
   };
   return (
     <Fragment>
+      <Confirmation close={close} opened={opened} />
       <LoadingOverlay visible={loading} />
       <div className="flex h-screen justify-center items-center p-5 sm:p-10 bg-circle-bg">
         <div className="max-w-[700px] w-full mx-auto p-5 sm:p-10 ci-shadow">
@@ -78,7 +82,12 @@ const SignUp = () => {
                 <div className="text-xs">Password strength</div>
               </div>
 
-              <Button size="lg" mt={54} className="w-full bg-circle-blue-two">
+              <Button
+                size="lg"
+                mt={54}
+                className="w-full bg-circle-blue-two"
+                onClick={open}
+              >
                 Complete Sign Up
               </Button>
             </form>
