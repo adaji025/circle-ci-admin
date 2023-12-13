@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./pages/auth/Login";
 import '@mantine/notifications/styles.css';
 import { Notifications } from "@mantine/notifications";
+import SignUp from "./pages/auth/SignUp";
 
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
       <Notifications position="top-right" />
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/sign-up" element={<SignUp />} />
       </Routes>
     </MantineProvider>
   );
