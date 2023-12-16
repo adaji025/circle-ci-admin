@@ -1,6 +1,7 @@
 import { Avatar, Button, Group, Menu } from "@mantine/core";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SlOptionsVertical } from "react-icons/sl";
+import useNotification from "../../hooks/useNotification";
 import Logo from "../../assets/svgs/circle-ci.svg";
 import HomeIcome from "../../assets/svgs/sidebar/home.svg";
 import MoneyIcon from "../../assets/svgs/sidebar/moneys.svg";
@@ -13,6 +14,7 @@ import UserIcon from "../../assets/svgs/sidebar/user-octagon.svg";
 const Sidebar = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { logoutUser } = useNotification();
   const route = [
     {
       title: "Home",
@@ -103,15 +105,18 @@ const Sidebar = () => {
         </div>
         <Menu shadow="md" width={200} position="left">
           <Menu.Target>
-            <Button size="sm" rightSection={<SlOptionsVertical size={30} color="#C0C0C0" />}>
-              
-            </Button>
+            <Button
+              size="sm"
+              rightSection={<SlOptionsVertical size={30} color="#C0C0C0" />}
+            ></Button>
           </Menu.Target>
 
           <Menu.Dropdown>
             <Menu.Item>Change Password</Menu.Item>
             <Menu.Item>Change DP</Menu.Item>
-            <Menu.Item color="#FF0030">Logout</Menu.Item>
+            <Menu.Item color="#FF0030" onClick={logoutUser}>
+              Logout
+            </Menu.Item>
           </Menu.Dropdown>
         </Menu>
       </div>
