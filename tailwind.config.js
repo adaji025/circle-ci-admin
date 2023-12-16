@@ -8,6 +8,9 @@ export default {
         "circle-blue-two": "#051070",
         "circle-bg": "#CDCEE2",
       },
+      screens: {
+        ci: "1150px"
+      }
     },
   },
   plugins: [],

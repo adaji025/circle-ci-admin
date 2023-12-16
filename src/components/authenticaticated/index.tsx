@@ -4,13 +4,13 @@ import Dashbaord from "../../pages/dashboard/Dashbaord";
 
 const Authenticated = () => {
   return (
-    <div className="flex items-start">
-      <div className="sticky top-0">
+    <div className="flex w-full items-start">
+      <div className="sticky top-0 hidden lg:flex">
         <Sidebar />
       </div>
-      <main className="flex">
+      <main className="flex flex-1">
         <Routes>
-          <Route path="/" element={<Dashbaord />} />
+          <Route path="/dashboard" element={<Dashbaord />} />
         </Routes>
       </main>
     </div>

@@ -7,7 +7,7 @@ const useNotification = () => {
 
   const logoutUser = () => {
     showNotification({
-      title: "Logout success",
+      title: "Success",
       message: `User logged out Login in to continue 😑`,
       color: "yellow",
     });
