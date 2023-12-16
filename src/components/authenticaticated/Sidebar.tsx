@@ -10,8 +10,15 @@ import PeopleIcon from "../../assets/svgs/sidebar/people.svg";
 import GalleryIcon from "../../assets/svgs/sidebar/gallery-export.svg";
 import SupportIcon from "../../assets/svgs/sidebar/device-message.svg";
 import UserIcon from "../../assets/svgs/sidebar/user-octagon.svg";
+import { useSelector } from "react-redux";
+import { UserType } from "../../types/auth";
+import { RootState } from "../../redux/store";
 
 const Sidebar = () => {
+  const userData: UserType = useSelector(
+    (state: RootState) => state.user.userData
+  );
+
   const location = useLocation();
   const navigate = useNavigate();
   const { logoutUser } = useNotification();
@@ -53,7 +60,7 @@ const Sidebar = () => {
     },
   ];
   return (
-    <div className="h-screen w-[250px] border-r">
+    <div className="w-[250px] border-r">
       <Group justify="center">
         <img src={Logo} alt="" className="mt-10 w-[100px]" />
       </Group>
@@ -76,7 +83,7 @@ const Sidebar = () => {
         ))}
       </div>
 
-      <div className="mt-5 mb-10 px-8 ">
+      <div className="mt-5 px-8 ">
         <hr />
       </div>
 
@@ -95,12 +102,14 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className="mt-16 bg-[#D9D9D9] p-2 flex items-center justify-between">
+      <div className="mt-10 bg-[#D9D9D9] p-2 flex items-center justify-between">
         <div className="flex gap-2 items-center">
           <Avatar size="lg" />
           <div>
-            <h2 className="font-bold text-black text-sm">John Doe</h2>
-            <div className="text-xs">sbxsn@circle.com</div>
+            <h2 className="font-bold text-black text-sm">
+              {userData.first_name} {userData.last_name}
+            </h2>
+            <div className="text-xs">{userData.email}</div>
           </div>
         </div>
         <Menu shadow="md" width={200} position="left">
@@ -120,9 +129,6 @@ const Sidebar = () => {
           </Menu.Dropdown>
         </Menu>
       </div>
-      {/* <div className="text-transparent">
-        hello
-      </div> */}
     </div>
   );
 };

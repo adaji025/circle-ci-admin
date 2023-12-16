@@ -33,8 +33,7 @@ const RightSidebar = () => {
         <div className="block">
           <nav className="-mb-px flex px-6" aria-label="Tabs">
             <div className="w-full flex border-b border-gray-50">
-              <a
-                href="#"
+              <div
                 className={classNames(
                   activeTab === 1
                     ? "after:content-[''] after:block after:absolute after:bottom-0 after:z-50 after:w-full after:h-2 after:rounded-tl-md after:rounded-tr-md after:bg-white text-white"
@@ -45,9 +44,8 @@ const RightSidebar = () => {
                 aria-current={activeTab === 1 ? "page" : undefined}
               >
                 Top Circlers
-              </a>
-              <a
-                href="#"
+              </div>
+              <div
                 className={classNames(
                   activeTab === 2
                     ? "after:content-[''] after:block after:absolute after:bottom-0 after:z-50 after:w-full after:h-2 after:rounded-tl-md after:rounded-tr-md after:bg-white text-white"
@@ -58,7 +56,7 @@ const RightSidebar = () => {
                 aria-current={activeTab === 2 ? "page" : undefined}
               >
                 Top Investors
-              </a>
+              </div>
             </div>
           </nav>
 
