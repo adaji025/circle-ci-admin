@@ -1,12 +1,12 @@
 import AxoisApi from "../api";
 import { APIS } from "../api/api";
-import { AdminLoginTypes } from "../types/auth";
+import { AdminLoginTypes, LoginResponseTypes } from "../types/auth";
 
 export const adminLogin = (data: AdminLoginTypes) => {
-  return new Promise((resolve, reject) => {
+  return new Promise<LoginResponseTypes>((resolve, reject) => {
     AxoisApi.post(APIS.AUTH.LOGIN, data)
-      .then((res) => {
-        resolve(res);
+      .then((res: {data: LoginResponseTypes}) => {
+        resolve(res.data);
       })
       .catch((err) => {
         reject(err);

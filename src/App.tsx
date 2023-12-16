@@ -1,13 +1,24 @@
+import { useEffect } from "react";
 import "@mantine/core/styles.css";
 import { MantineProvider } from "@mantine/core";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Login from "./pages/auth/Login";
-import '@mantine/notifications/styles.css';
+import "@mantine/notifications/styles.css";
 import { Notifications } from "@mantine/notifications";
 import SignUp from "./pages/auth/SignUp";
-
+import Authenticated from "./components/authenticaticated";
 
 export default function App() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const token = localStorage.getItem("circle_ci_admin") ?? "";
+
+  useEffect(() => {
+    if (token && location.pathname === "/") {
+      navigate("/dashboard");
+    }
+  }, []);
+
   return (
     <MantineProvider
       theme={{
@@ -20,6 +31,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/*" element={<Authenticated />} />
       </Routes>
     </MantineProvider>
   );
