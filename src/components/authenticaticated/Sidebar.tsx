@@ -68,7 +68,7 @@ const Sidebar = ({ openMobileNav }: Props) => {
   return (
     <Fragment>
       <ConfirmationLogout opened={opened} close={close} />
-      <div className="w-[250px] border-r">
+      <div className="w-[250px] lg:border-r">
         <Group justify="center">
           <img src={Logo} alt="" className="mt-10 w-[100px]" />
         </Group>

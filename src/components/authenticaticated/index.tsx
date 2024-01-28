@@ -4,6 +4,7 @@ import Sidebar from "./Sidebar";
 import Dashbaord from "../../pages/dashboard/Dashbaord";
 import MobileSidebar from "./MobileSidebar";
 import Header from "../Header";
+import SpendAndSave from "../../pages/SpendAndSave/SpendAndSave";
 
 const Authenticated = () => {
   const [mobileNav, openMobileNav] = useState(true);
@@ -18,6 +19,7 @@ const Authenticated = () => {
         <main className="flex flex-1">
           <Routes>
             <Route path="/dashboard" element={<Dashbaord />} />
+            <Route path="/spend-and-save" element={<SpendAndSave />} />
           </Routes>
         </main>
       </div>
